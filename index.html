@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-GB" dir="ltr">
+    <head>
+	<!-- Pretty much lifted from http://www.georgepaterson.com/ -->
+		<title>Samuel Cousin</title>
+		<meta charset="utf-8">
+		<link rel="icon" type="image/ico" href="favicon.ico"/>
+		<style>
+			/*
+			 * If developing a full page background the styles from .video-background will be required.
+			 * The classname itself is unimportant.
+			 *
+			 */
+			.video-background {
+				position: absolute;
+				top: 0;
+				left: 0;
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+			}
+			.video-background video {
+				min-height: 100%; 
+				min-width:100%; 
+			}
+			#page {
+				position: relative; 
+				z-index: 1;
+				width: 960px;
+				color: #FFF;
+				background: transparent url(themes/background.png) repeat top left;
+				margin: 0 auto;
+			}
+			#main {
+				text-align: center;
+				padding: 0px;
+				margin-top: 50px;
+				overflow: hidden;
+				
+			}
+			
+
+	/* Smaller than standard 960 (devices and browsers) */
+	@media only screen and (max-width: 959px) {#content {width: 950px;} }
+
+	/* Tablet Portrait size to standard 960 (devices and browsers) */
+	@media only screen and (min-width: 768px) and (max-width: 959px) {#content {width: 700px;}}
+
+	/* All Mobile Sizes (devices and browser) */
+	@media only screen and (max-width: 767px) {#content {width: 650px;}}
+
+	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+	@media only screen and (min-width: 480px) and (max-width: 767px) {#content {width: 380px;}}
+
+	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+	@media only screen and (max-width: 479px) {#content {width: 280px;}}
+		
+		</style>
+		<script src="external/jquery.js"></script>
+		<script src="script/jquery.videobackground.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('dl').toggle();
+				$('h2').bind('click', function(event) {
+					event.preventDefault();
+					$(this).next('dl').slideToggle(500, function() {
+						$('.video-background').videobackground('resize');
+					});
+				});
+				$('body').prepend('<div class="video-background"></div>');
+				$('.video-background').videobackground({
+					videoSource: [['video/sea.mp4', 'video/mp4'],
+						['video/sea.webm', 'video/webm'], 
+						['video/sea.ogv', 'video/ogg']], 
+					poster: 'video/sea.jpg',
+					loop: 'true',
+					loadedCallback: function() {
+						$(this).videobackground('mute');
+					}
+				});
+			});
+		</script>
+    </head>
+    <body>	
+		<div id="page">
+			<div id="page-group">
+				<div id="header" class="header" role="banner" ></div>
+				<div id="content">
+					<div id="main" role="main">
+						<a href="mailto:hello@samuelcousin.com?subject=fortune"> <img id="samuel" src="external/samuel.jpg"> </a>
+					</div>
+				</div>
+			</div>
+			<div id="footer" class="footer" role="contentinfo"></div>
+		</div>
+    </body>
+</html>
