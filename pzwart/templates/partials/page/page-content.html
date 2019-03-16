@@ -1,0 +1,48 @@
+<div class="page-content">
+    <div class="page-title noselect" {% if page.background %} style="background-image:url('{{ page.root_path }}/content/{{ page.background }}');" {% endif %}>
+      <h2>
+        {% if page.date %} <span class="page-date">{{ page.date }} / </span> {% endif %}
+        <a class="page-permalink" href="http://{{ page.base_url }}/{{ page.permalink }}" title="Permalink">
+          {{ page.title }}
+        </a>
+      </h2>
+      <a href="{{ page.root_path }}" title="Close"><span class="page-close switch"></span></a>
+    </div>
+  
+  	{% include 'partials/assets/images/a-images.html' %}
+    {% include 'partials/assets/html/a-html.html' %}
+
+  	{% if page.extracontent|length > 0 %} 
+  		{% set columns = '1' %} 
+  	{% elseif page.columns > 0 %}
+  		{% set columns = page.columns %} 
+  	{% else %}
+  		{% set columns = '0' %} 
+  	{% endif %}
+
+  	{% if page.nojustify != true %} 
+  		{% set justify = 'sweet-justice' %} 
+  	{% endif %}
+
+    {% if (page.content|length > 0) or (page.extracontent|length > 0) or (page.subtitle|length > 0) %}
+  	  <div class="page-description {{ justify }}" columns="{{ columns }}">
+        {% if page.subtitle %} 
+          <p class="abstract">{{ page.subtitle }}</p> 
+        {% endif %}
+        {{ page.content }}
+      </div>
+	    {% if page.extracontent|length > 0 %} <div class="page-description {{ justify }} extra">{{ page.extracontent }}</div> {% endif %}
+    {% endif %}
+
+  	{% include 'partials/assets/images/images.html' %}
+  	{% include 'partials/assets/video.html' %}
+  	{% include 'partials/assets/swf.html' %}
+  	{% include 'partials/assets/html/html.html' %}
+  
+  	{% include 'partials/assets/pdfs.html' %}
+  	{% include 'partials/assets/downloads.html' %}
+  	{% include 'partials/assets/links.html' %}
+  
+  	{% include 'partials/assets/html/end-html.html' %}
+  	
+</div>

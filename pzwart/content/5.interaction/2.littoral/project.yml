@@ -1,0 +1,8 @@
+title: Littoral
+date: 2012
+columns: 1
+columnsmode: packed
+content: | 
+ Littoral is generative sculpture that make use of field recording to illustrate a soundscape. It was built around notions of synaesthesia and transformation, recycling sounds and machine to build a generative visualisation: when certain sounds are played, certain forms are created and a drawing meant evoke a skyline is slowly drawn. 
+ 
+ The installation was displayed in action, reacting to the looping recording. It was coded in Processing and interfaced with an Arduino. The device was re-purposed from an earlier project, Echo.

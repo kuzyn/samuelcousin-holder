@@ -1,0 +1,26 @@
+{% if page.zip or page.rar or page.gz %} 
+	<h4 id="downloads-title">Downloads</h4>
+	<div id="downloads" class="asset-frame no-print well"> 
+		{% for file in page.zip %}
+	  	<div class="item">
+	  		<h5>
+	  			<a rel="download" href="{{ file.url }}" title="Download {{ file.name }}">{{ file.name }}</a>
+	  		</h5>
+	  	</div>
+		{% endfor %}
+		{% for file in page.rar %}
+	  	<div class="item">
+	  		<h5>
+	  			<a rel="download" href="{{ file.url }}" title="Download {{ file.name }}">{{ file.name }}</a>
+	  		</h5>
+	  	</div>
+		{% endfor %}
+		{% for file in page.gz %}
+	  	<div class="item">
+	  		<h5>
+	  			<a rel="download" href="{{ file.url }}" title="Download {{ file.name }}">{{ file.name }}</a>
+	  		</h5>
+	  	</div>
+		{% endfor %}
+	</div> 
+{% endif %}

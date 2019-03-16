@@ -1,0 +1,19 @@
+Choosing between Dark / Light themes
+
+The default theme is the dark theme. If you would like to change that, you would have to copy index_white.min.css to index.min.css. Do the same with index_dark.min.css if you would like to revert.
+
+How to edit .js and .css files
+
+Assemblage Plus makes use of Minifed Javascript and CSS files (the ones with "min" in their name), a compressed version of the original scripts, in order to decrease file size. Editing these files is very difficult since all formatting is removed at compression. It is therefore advised to edit the original scripts.
+In order for editing to have effect, however, the content of the original file should be copied to it's minified counterpart. 
+
+The easiest way to do this is the following:
+
+1. Copy the content of MyScript.js (or MyScript.css) to MyScript.min.js (or Myscript.min.css), where MyScript is the name of the script you want to edit.
+2. Perform your edits and test if they perform as intended.
+3. (optional) Copy your edits back to the original script.
+4. (optional) Minify the new file. This can be performed with an online minifier, such as http://www.refresh-sf.com/yui/  or http://yui.2clics.net/ . Paste the new content into the minifier or choose the file, hit minify and copy the output back inside the file, replacing the existing content.
+
+If you want to make extensive changes to the scripts / CSS it is advised that you test them with the un-minified code first (so that you can easily edit the files), and as soon as you are done perform the last 2 steps above.
+
+Happy editing!

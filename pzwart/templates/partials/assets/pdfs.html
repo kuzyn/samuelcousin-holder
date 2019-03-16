@@ -1,0 +1,12 @@
+{% if page.pdf %} 
+<h4 id="pdfs-title">Documents</h4>
+<div id="pdfs" class="asset-frame no-print well"> 
+	{% for pdf in page.pdf %}
+	<div class="item">
+	  	<h5>
+	  		<a rel="download" href="{{ pdf.url }}" title="View/Download {{ pdf.name }}">{{ pdf.name }}</a>
+	  	</h5>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}

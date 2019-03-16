@@ -1,0 +1,26 @@
+{% set bottomgallery = false %}
+{% for image in page.images %}
+	{% if image.url|replace({'top.': ''})|length == image.url|length %}
+		{% set bottomgallery = true %}
+	{% endif %}
+{% endfor %}
+
+{% if page.gallery == "fade" %}
+	{% set type = "fade" %}
+{% elseif page.gallery == "touch" %}
+	{% set type = "touch" %}
+{% else %}
+	{% set type = "auto" %}
+{% endif %}
+
+{% if bottomgallery == true %}
+  	<div class="{% if not page.noslider %}gallery {% endif %} {{ type }} noselect {% if not page.imageleft %}centered {% endif %}" {% if page.slideinterval > 0 %} data-slideinterval="{{page.slideinterval}}" {% endif %}>
+	  	{% for image in page.images %}
+	  		{% if image.url|replace({'top.': ''})|length == image.url|length and image.url|replace({'titleimage': ''})|length == image.url|length %}
+		    <div class="gallery-image" data-title="{{ image.title }}" data-description="{{ image.description }}">
+		      	<img src="{{ image.url }}" alt="{{ image.title }}" width="{{ image.width }}" height="{{ image.height }}" />
+		    </div>
+		    {% endif %}
+	  	{% endfor %}
+  	</div>
+{% endif %}

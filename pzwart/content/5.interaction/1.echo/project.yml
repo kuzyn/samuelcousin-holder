@@ -1,0 +1,14 @@
+title: Echo
+date: 2011
+columns: 1
+columnsmode: packed
+content: | 
+ Echo was a team project done over about three weeks. It consist of a custom built seismograph reacting to shifts in word used on Twitter. Tweets are aggregated together and every mention of Facebook increase the arc drawn. The associated website is now offline.
+ 
+ I worked on the electronics (mainly an Arduino servo board), the documentation (video, text) and a slight part of code.
+ 
+ 
+ __Ethos__:
+ Networks are shaped, shifted, defined by movements. If we consider them as planes, they exist within certain boundaries, frontiers that separate one from one another. They are contained within edges that sometime get dull or sharpen, that sometime extend or break. A malleable matrix of push-pull dynamics, a self defined entity reviving itself continuously. Scar tissues are networks. 
+ 
+ We want to physically visualize invisible tectonics plates : the unstable virtual ground. It's silent but far from inert. Most see it as a whole medium, as an homogeneously stable mixture of media when in fact, it react like nitroglycerin. Billion times a second. How can we render those crossings, those collisions, that noise ? The same as if they would be actual earthquakes; using cross-references as signs that tectonics plates are shearing, we will translate it visually using a seismograph. 

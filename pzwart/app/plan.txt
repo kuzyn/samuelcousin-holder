@@ -1,0 +1,43 @@
+index.php
+	*require main-config.php
+	*require text-msg-class.php
+	*require isotope-cast-class;
+	
+	*include meta.php
+		?analytics
+	*include header.php
+		?require js
+		?requireisotope etc
+		?require jquery
+		?require css
+	*include body.php
+	*include footer.php
+
+./main-config.php
+	-connection
+	-server time
+	-filepath
+	-sessionstart();
+
+./text-msg Class;
+	*require main-config.php
+		-function fetch();
+			{ select attributes, selects terms}
+			
+		-function display();
+			{ select which part to display, return only if result > 0, foreach...}
+
+		-function fetchall();
+			{iterate and pull out all rows, store in arrays/terms}
+			
+		-function debug ();
+			{enable traces}
+			
+	
+./isotope-cast Class;
+	*require text-msg-class.php
+
+	-function populateHTMLelements();	
+		{take fetchallArrayN[] and cast each elements to html}	
+		
+		

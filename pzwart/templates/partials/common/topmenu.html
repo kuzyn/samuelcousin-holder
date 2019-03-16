@@ -1,0 +1,32 @@
+<ul id="top-menu" class="noselect">
+
+{% for item in page.root %}
+    {{ _self.menuitem(item) }}
+{% endfor %}
+
+</ul>
+
+{% macro menuitem(page) %}
+    {% if page.children|length == 0 and page.inmenu %}
+        <li id="m-{{ page.id }}" class="menu-item">
+            {% if page.linkout %}
+            <a href="{{ page.linkout }}">
+            {% else %}
+            <a class="page-link" href="http://{{ page.base_url }}/{{ page.permalink }}">
+            {% endif %}
+            {% if page.inmenu|lower != 1 %}
+                {{ page.inmenu }}
+            {% elseif page.title %}
+                {{ page.title }}
+            {% else %}
+                {{ page.page_name }}
+            {% endif %}
+            </a>
+        </li>
+    {% endif %}
+
+    {% for child in page.children %}
+        {{ _self.menuitem(child) }}
+    {% endfor %}
+
+{% endmacro %}

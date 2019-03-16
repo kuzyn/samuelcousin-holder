@@ -1,0 +1,77 @@
+/*
+  Add custom CSS rules here.
+*/
+
+/* You can enable the MavenPro font by uncommenting it below */
+/* Then, you can target is as usual in the CSS. */
+
+@import url(http://fonts.googleapis.com/css?family=Codystar);
+@import url(http://fonts.googleapis.com/css?family=Exo+2:400,100,500);
+
+ @font-face {
+    font-family: 'MavenProRegular';
+    src: url('../fonts/maven/maven_pro_regular-webfont.eot');
+    src: url('../fonts/maven/maven_pro_regular-webfont.eot?#iefix') format('eot'),
+         url('../fonts/maven/maven_pro_regular-webfont.woff') format('woff'),
+         url('../fonts/maven/maven_pro_regular-webfont.ttf') format('truetype'),
+         url('../fonts/maven/maven_pro_regular-webfont.svg#webfontOM8fITNz') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#title h2 {
+font-family: 'Codystar', 'MavenProRegular';
+font-weight: normal;
+font-style: normal;
+font-size: 48px;}
+
+body {background: #fff}
+a, a:visisted {color: #bbb !important}
+a:hover {color: #aaa }
+p a {color: #aaa !important}
+
+.prev:active, .prev.pressed {
+  background: #fff url('../../images/arrow_left_white.png')  center no-repeat;
+}
+
+.next:active, .next.pressed {
+  background: #fff url('../../images/arrow_right_white.png')  center no-repeat;
+}
+
+#top-menu li a, .page-title h2 {
+  font-family: 'Exo 2', 'OpenSansRegular';
+  font-size: 20px;
+}
+
+.image-wrapper {
+  margin-top: 20px;
+  background: #fff;
+}
+
+.gallery-caption {
+  background: #fff;
+}
+
+.projectFrame {
+  background: #fff;
+  color: #333;
+}
+
+#title-loader {
+  visibility:hidden;
+  display:none;
+}
+
+.asset-frame {
+    background: #f6f6f6
+}
+
+.asset-frame a {
+	font-size: 12px;
+    color: #777;
+}
+
+.asset-frame a:hover {
+    color: #666;
+}
+

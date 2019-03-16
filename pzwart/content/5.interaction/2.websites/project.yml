@@ -1,0 +1,42 @@
+title: Websites
+
+31.top.jpg:
+    description: G.D.G. Aviation Inc. @ http://gdgaviation.com 
+32.top.jpg:
+    description: G.D.G. Aviation Inc. @ http://gdgaviation.com
+21.top.jpg:
+    description: artsyfact @ http://artsyfact.com 
+22.top.jpg:
+    description: artsyfact @ http://artsyfact.com
+23.top.jpg:
+    description: ■■■■■■■.ws / retention @ http://■■■■■■■.ws/dev/v012a/public 
+28.top.jpg:
+    description: Murders @ http://murders.spellcaster.cc 
+27.top.jpg:
+    description: Antiflash Games @ http://antiflash.ca 	
+25.top.jpg:
+    description: PoEMM @ http://poemm.net 
+26.top.jpg:
+    description: PoEMM @ http://poemm.net
+31.top.jpg:
+    description: Ad.MOD @ http://admod.info
+34.top.jpg:
+    description: Ad.MOD @ http://admod.info
+35.top.jpg:
+    description: some weird dream @ http://someweirddream.samuelcousin.com 
+40.top.jpg:
+    description: some weird dream @ http://someweirddream.samuelcousin.com
+
+columnmode: column-pack
+ignore: true
+inmenu: false
+columns: 1
+content: |
+ artsyfact @ <http://artsyfact.com> /// Content, design, script, integration
+ ■■■■■■■.ws / retention @ <http://■■■■■■■.ws/dev/v012a/public> /// Content, design, script, integration
+ PoEMM @ <http://poemm.net> /// Content, design, script, integration
+ Antiflash Games @ <http://antiflash.ca> /// Content, design, script, integration	
+ Murders @ <http://murders.spellcaster.cc> /// Content, design, interface	
+ G.D.G. Aviation Inc. @ <http://gdgaviation.com> /// Content, integration
+ Ad.MOD @ <http://admod.info> /// Content, integration
+ some weird dream @ <http://someweirddream.samuelcousin.com> /// Content, design, script, integration

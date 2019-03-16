@@ -1,0 +1,73 @@
+{% set categories = 0 %}
+{% for item in page.root %}
+    {% if item.children|length > 1 %}
+        {% set categories = categories + 1 %}
+    {% endif %}
+{% endfor %}  
+
+<div id="tags" class="noselect">
+    <div class="thick-divider"></div>
+    {% if categories > 1 and page.nonav != true %}
+    <div class="nest snapshot-nest parent-is-snapshot {% for item in page.root %}{{ _self.children('nest', item) }} {% endfor %}">
+        {% for item in page.root %}
+            {% if item.children %} 
+                <div class="tag snapshot-tag {% if item.thumb %}base{% endif %} {{ _self.children('tag', item) }}" id="{{ item.id }}">
+                    {% if item.title %}
+                        {{ item.title }}
+                    {% else %}
+                        {{ item.page_name }}
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div class="tag snapshot-tag" id="snapshot">All</div>
+        <div class="thin-divider"></div>
+    </div>
+
+    {% for item in page.root %}
+        {% if item.children and not item.thumb %} 
+            {{ _self.nest(item) }}
+        {% endif %} 
+    {% endfor %}
+
+    <div class="nohide nosort options">
+        <!--<input id="search-field" type="text" name="Search" />-->
+        <span class="sorting">
+            <span id="sbd" class="sort-option" title="Sort by Date"></span>
+            <span id="sbc" class="sort-option" title="Sort by Category"></span>
+            <span id="sbr" class="sort-option" title="Shuffle"></span>
+        </span>
+    </div>
+    {% endif %}
+</div>
+
+{% macro children(suffix, page) %}
+    {{ page.id }}{% if suffix %}-{{ suffix }}{% endif %}{{ ' ' }}
+    {% for item in page.children %}
+        {{ _self.children(suffix, item) }}
+    {% endfor %}
+{% endmacro %}
+
+{% macro parents(suffix, page) %}
+    {{ page.id }}{% if suffix %}-{{ suffix }}{% endif %}{{ ' ' }}
+    {% for item in page.parents %}
+        {{ _self.parents(suffix, item) }}
+    {% endfor %}
+{% endmacro %}
+
+{% macro nest(page) %}
+    <div class="nest {{ _self.children('nest', page) }} {{ page.id }}-nest parent-is-{{ page.id }}">
+        {% for item in page.children %} 
+            {% if item.children %} 
+                <div class="tag snapshot-tag {{ _self.parents('tag', item) }} {{ _self.children('tag', item) }} {% if item.thumb %}base{% endif %}" id="{{ item.id }}">{{ item.title }}</div>
+            {% endif %} 
+        {% endfor %}
+      <div class="thin-divider"></div>
+    </div>
+
+    {% for item in page.children %} 
+        {% if item.children and not item.thumb %}
+            {{ _self.nest(item) }}
+        {% endif %} 
+    {% endfor %}
+{% endmacro %}

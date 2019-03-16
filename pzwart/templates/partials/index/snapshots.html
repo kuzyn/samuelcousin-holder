@@ -1,0 +1,85 @@
+
+
+<div id="snapshot-container" class="noselect" {% if page.sorting %} sorting="{{ page.sorting }}" {% endif %}>
+
+{% for item in page.root %}
+	{% if item.children|length > 0 and page.ignore != true %}
+		{{ _self.snapshot(item, false) }}
+	{% endif %}      
+{% endfor %}
+
+</div>
+
+{% macro snapshot(page, hidden) %}
+
+	{% if page.children|length > 0 %}
+		{% if hidden == true %}
+			{% set type = "hidden category" %}
+			{% set hidechildren = true %}
+		{% elseif page.thumb %}
+			{% set type = "hidden category base" %}
+			{% set hidechildren = true %}
+		{% else %}
+			{% set type = "category" %}
+		{% endif %}
+	{% else %}
+		{% if hidden == true %}
+			{% set type = "hidden leaf" %}
+			{% set hidechildren = true %}
+		{% else %}
+			{% set type = "leaf" %}
+		{% endif %}
+	{% endif %}
+
+	{% if type != "category" and page.ignore != true %}
+		<div 
+			id="s-{{ page.id }}" 
+			class="{{ type }} {% if page.featured == true %} featured {% endif %} {% if page.linkout == true %} external-link {% endif %} snapshot {% if page.is_current == true %} faded {% endif %} {{ page.id }} {{ _self.parents('', page) }}"
+			>
+		
+			{% if page.linkout %}
+			<a class="external-link" href="{{ page.linkout }}">
+			{% else %}
+			<a class="snapshot-link" href="http://{{ page.base_url }}/{{ page.permalink }}">
+			{% endif %}
+
+				{% if page.thumb %}
+				<img src="{{ page.thumb.url }}" width="{{ page.thumb.width }}" height="{{ page.thumb.height }}" class="projectThumb" alt="{{ page.title }}"/>
+				{% endif %}
+
+		  		{% if not page.notitle %}
+			  	<div class="projectFrame">
+			  		<h3>
+			      		<span class="projectTitle">{{ page.title }}</span>
+			      		{% if page.date %} <span class="projectDate"> &mdash; {{ page.date }}</span>{% endif %}
+			      		{% if type == "hiddenbase" %} <span class="categoryTitle"></span> {% endif %}
+			      		{% if page.linkout %} <span class="link-out"></span> {% endif %}
+					</h3>
+				</div>
+				{% endif %}
+			</a>
+
+			{% if page.ribbon %}
+       			<div class="ribbon-wrapper"><div class="ribbon">{{ page.ribbon }}</div></div>
+			{% endif %}
+
+			{% if page.snapshothtml %}
+       			{{ page.snapshothtml }}
+			{% endif %}
+
+		</div>
+	{% endif %}
+
+  	{% for child in page.children %}
+  		{{ _self.snapshot(child, hidechildren) }}
+  	{% endfor %}
+
+{% endmacro %}
+
+{% macro parents(suffix, page) %}
+  	{% for item in page.parents %}
+    	{{ item.id }}{% if suffix %}-{{ suffix }}{% endif %}{{ ' ' }}
+    	{{ _self.parents(suffix, item) }}
+  	{% endfor %}
+{% endmacro %}
+

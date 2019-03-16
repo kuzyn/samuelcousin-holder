@@ -1,0 +1,14 @@
+{% if page.links %}
+	<h4 id="links-title">Links</h4>
+	<div id="links" class="asset-frame well">
+	{% for link in page.links %}
+		{% if link.url|length > 0 and link.label|length > 0 %}
+		<h5 class="item">
+			<a rel="link" href="{{ link.url }}" title="Link to {{ link.label }}">
+				{{ link.label }}
+			</a>
+		</h5>
+		{% endif %}
+	{% endfor %}
+	</div>
+{% endif %}

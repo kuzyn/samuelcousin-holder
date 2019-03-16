@@ -1,0 +1,58 @@
+"plugins
+call plug#begin('~/.vim/plugged')
+  Plug 'pangloss/vim-javascript'
+  Plug 't1mxg0d/vim-lucario'
+  Plug 'Shougo/deoplete', {'do': ':UpdateRemotePlugins' }
+  Plug 'ternjs/tern_for_vim'
+" Plug 'helino/vim-json'
+  Plug 'junegunn/vim-easy-align'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'chriskempson/base16-vim'
+  Plug 'neomake/neomake'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'vim-airline/vim-airline'
+" Plug 'benjie/neomake-local-eslint.vim'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'tpope/vim-fugitive'
+call plug#end()
+
+"editor
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set nu
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgray
+set clipboard=unnamed
+set updatetime=250
+set exrc
+set secure
+syntax enable
+set undolevels=1000
+
+"theme
+set termguicolors
+colorscheme lucario
+set background=dark
+
+"gitgutter
+let g:gitgutter_sign_column_always = 1
+
+"deoplete
+let g:deoplete#enable_at_startup = 1
+
+"nerd tree
+" au vimenter * NERDTree
+" au bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"neomake
+au! BufWritePost * Neomake
+let g:neomake_open_list = 0 
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+"md files
+au BufRead,BufNewFile *.md setlocal textwidth=80 linebreak
+
+"c files
+au BufRead,BufNewFile *.h,*.c set filetype=c

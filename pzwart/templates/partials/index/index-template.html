@@ -1,0 +1,49 @@
+<!doctype html>
+
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    
+    {% include 'partials/common/head.html' %}
+    
+    <body {% if page.background %} style="background-image:url('{{ page.root_path }}/content/{{ page.background }}');" {% endif %}>
+
+        {% include 'partials/common/noscript.html' %}
+
+        <div id="outer-container" 
+            {% if page.nohistory == true %} class="no-history" {% endif %} 
+            {% if page.width > 0 %} style="max-width: {{ page.width }};" {% endif %}>
+
+            <div id="title" class="noselect">
+                {% include 'partials/common/title.html' %}
+                {% include 'partials/common/topmenu.html' %}
+            </div>
+          
+            <div id="page-wrapper">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+          
+            {% include 'partials/index/navigation.html' %}
+            {% include 'partials/index/snapshots.html' %}
+            <div class="goto-top-wrapper noselect"></div>
+            {% include 'partials/common/footer.html' %}
+              
+        </div>
+        
+        <script type="text/javascript">
+            document.getElementById('outer-container').style.visibility = 'hidden';
+        </script>
+        
+        <div id="ajax-loader"></div>
+        
+        {% include 'partials/common/scripts.html' %}
+        {% if page.extrahtml %} {{page.extrahtml}} {% endif %}
+      
+        {# The following is required for proper title handling #}
+        <div class="site-title" data-sitetitle="{{ page.name }} {% if page.profession|length > 0 %} / {{ page.profession }} {% endif %}"></div>
+
+    </body>
+</html>

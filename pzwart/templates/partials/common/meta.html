@@ -1,0 +1,6 @@
+
+{% if page.summary %} <meta name="description" content="{{ page.summary }}"> {% endif %}
+{% if page.author %} <meta name="author" content="{{ page.author }}"> {% endif %}
+{% if page.keywords|length > 0 %} 
+	<meta name="keywords" content="{% for keyword in page.keywords %}{{ keyword }} {% endfor %}"> 
+{% endif %}

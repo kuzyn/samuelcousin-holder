@@ -1,0 +1,5 @@
+{% for html in page.html %}
+	{% if html.url|replace({'end.': ''})|length != html.url|length %}
+		{{ html.content }}
+	{% endif %}
+{% endfor %}

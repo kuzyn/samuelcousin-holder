@@ -1,0 +1,46 @@
+{% if page.email %}
+	{% set about = "mailto: " ~ page.email %}
+	{% set title = "Mail to " ~ page.name %}
+{% else %}
+	{% set about = "http://" ~ page.base_url %}
+	{% set title = "Back to Index" %}
+	{% for item in page.root %}
+		{% if item.titlelink == true %}
+			{% set about = "http://" ~ item.base_url ~ "/" ~ item.permalink %}
+			{% set title = page.name %}
+		{% endif %}
+	{% endfor %}
+	{% set class = "dynamic-link" %}
+{% endif %}
+
+{% set titleimage = {} %}
+{% for item in page.root %}
+	{% for image in item.images %}
+		{% if image.url|replace({'titleimage': ''})|length != image.url|length %}
+			{% set titleimage = { 'url': image.url, 'width': image.width, 'height': image.height } %}
+		{% endif %}
+	{% endfor %}
+{% endfor %}
+
+
+{% if titleimage|length > 0 %}
+	{% if about %}<a id="title-link" class="{{ class }}" href="{{ about }}" title="{{ title }}">{% endif %}
+		<span id="title-image" style="width: {{ titleimage.width }}px; height: {{ titleimage.height }}px; background: url({{ titleimage.url }}) left center no-repeat;"></span>
+	{% if about %}</a>{% endif %}
+{% else %}
+<h2>
+	{% if about %}<a id="title-link" class="{{ class }}" href="{{ about }}" title="{{ title }}">{% endif %}
+		{{ page.name }} {% if page.profession %} / {{ page.profession }} {% endif %}
+	{% if about %}</a>{% endif %}
+</h2>
+{% endif %}
+
+<div id="title-loader"></div>
+{% if page.customheader %} {{ page.customheader }} {% endif %}
+
+{% if page.description %} 
+<div id="desc" class="multi-column">
+	<div class="thin-divider"></div>
+	<h5>{{ page.description }}</h5>
+</div>
+{% endif %}
